@@ -2,9 +2,9 @@
 /**
  * sitemapFriend
  *
- * Copyright (c) 2010 Mihai Șucan <mihai.sucan@gmail.com>.
+ * Copyright 2012 by Jérôme Perrin <hello@jeromeperrin.com>
  *
- * - Based on GoogleSiteMap by Shaun McCormick <shaun@modx.com>.
+ * - Based on GoogleSiteMap by Shaun McCormick <shaun@modx.com>
  *
  * This file is part of sitemapFriend.
  *
@@ -31,25 +31,31 @@
  * @package sitemapfriend
  * @subpackage build
  */
-$mtime = microtime();
-$mtime = explode(' ', $mtime);
-$mtime = $mtime[1] + $mtime[0];
-$tstart = $mtime;
+
+$tstart = explode(' ', microtime());
+$tstart = $tstart[1] + $tstart[0];
 set_time_limit(0);
 
+/* define package names */
 define('PKG_NAME', 'sitemapFriend');
 define('PKG_NAME_LOWER', strtolower(PKG_NAME));
-define('PKG_VERSION', '1.0');
-define('PKG_RELEASE', 'beta2');
+define('PKG_VERSION', '1.0.0');
+define('PKG_RELEASE', 'beta3');
 
-$sources = array('root' => dirname(dirname(__FILE__)));
-$sources['build'] = $sources['root'] . '/_build';
-$sources['core'] = $sources['root'] . '/core/components/sitemapfriend';
-$sources['docs'] = $sources['core'] . '/docs';
-$sources['snippets'] = $sources['core'] . '/elements/snippets';
-$sources['chunks'] = $sources['core'] . '/elements/chunks';
-$sources['properties'] = $sources['build'] . '/properties';
-$sources['lexicon'] = $sources['core'] . '/lexicon';
+/* define build paths */
+$root = dirname(dirname(__FILE__)).'/';
+$sources = array (
+    'root' => $root,
+    'build' => $root .'_build/',
+    'data' => $root . '_build/data/',
+    'source_core' => $root.'core/components/'.PKG_NAME_LOWER,
+    'source_assets' => $root.'assets/components/'.PKG_NAME_LOWER,
+    'docs' => $root.'core/components/'.PKG_NAME_LOWER.'/docs/',
+    'snippets' => $root.'core/components/'.PKG_NAME_LOWER.'/elements/snippets/',
+    'lexicon' => $root . 'core/components/'.PKG_NAME_LOWER.'/lexicon/',
+    'model' => $root.'core/components/'.PKG_NAME_LOWER.'/model/',
+);
+unset($root);
 
 /* override with your own defines here (see build.config.sample.php) */
 require_once dirname(__FILE__) . '/build.config.php';
@@ -59,77 +65,28 @@ $modx = new modX();
 $modx->initialize('mgr');
 $modx->setLogLevel(modX::LOG_LEVEL_INFO);
 $modx->setLogTarget(XPDO_CLI_MODE ? 'ECHO' : 'HTML');
+echo 'Packing '.PKG_NAME_LOWER.'-'.PKG_VERSION.'-'.PKG_RELEASE.'<pre>'; flush();
 
 $modx->loadClass('transport.modPackageBuilder', '', false, true);
 
 $builder = new modPackageBuilder($modx);
+$builder->directory = dirname(dirname(__FILE__)).'/_packages/';
 $builder->createPackage(PKG_NAME_LOWER, PKG_VERSION, PKG_RELEASE);
-$builder->registerNamespace(PKG_NAME_LOWER, false, true,
-  '{core_path}components/' . PKG_NAME_LOWER . '/');
+$builder->registerNamespace(PKG_NAME_LOWER, false, true, '{core_path}components/'.PKG_NAME_LOWER.'/');
 
 /* create category */
 $category = $modx->newObject('modCategory');
-$category->set('id', 0);
+$category->set('id', 1);
 $category->set('category', PKG_NAME);
+$modx->log(modX::LOG_LEVEL_INFO,'Packaged in category.'); flush();
 
-/* create the chunks */
-
-$chunkNames = array(
-  array('sitemap_html_item', 'The default chunk used for each link displayed in an HTML site map.'),
-  array('sitemap_html_container', 'The default chunk used for each group/folder of pages displayed in an HTML site map.'),
-  array('sitemap_html_outer', 'The default chunk used for wrapping the entire list of pages in an HTML site map.'),
-  array('sitemap_xml_item', 'The default chunk used for each link displayed in an XML site map.'),
-  array('sitemap_xml_outer', 'The default chunk used for each group/folder of pages displayed in an XML site map.'),
-);
-$chunks = array();
-
-$modx->log(modX::LOG_LEVEL_INFO,'Packaging chunks...');
-foreach ($chunkNames as $id => $chunkInfo) {
-  $chunkName = $chunkInfo[0];
-  $chunkDesc = $chunkInfo[1];
-  $chunk = $modx->newObject('modChunk');
-  $chunk->set('id', $id);
-  $chunk->set('name', $chunkName);
-
-  $chunkName = strtolower($chunkName);
-
-  $chunk->set('description', $chunkDesc);
-  $chunk->setContent(file_get_contents($sources['chunks'] . "/$chunkName.chunk.tpl"));
-
-  $chunks[] = $chunk;
-}
-$category->addMany($chunks);
-unset($chunkNames, $chunks, $chunk, $properties, $chunkInfo, $chunkName, $chunkDesc);
-
-
-/* create the snippet */
-
-$snippetNames = array(
-  array('sitemapFriend', 'Allows you to generate site maps as HTML, XML or other formats.'),
-);
-$snippets = array();
-
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaging snippets...');
-foreach ($snippetNames as $id => $snippetInfo) {
-  $snippetName = $snippetInfo[0];
-  $snippetDesc = $snippetInfo[1];
-
-  $snippet = $modx->newObject('modSnippet');
-  $snippet->set('id', $id);
-  $snippet->set('name', $snippetName);
-
-  $snippetName = strtolower($snippetName);
-
-  $snippet->set('description', $snippetDesc);
-  $snippet->setContent(file_get_contents($sources['snippets'] . "/$snippetName.snippet.php"));
-
-  $properties = include $sources['properties'] . "/snippet_$snippetName.inc.php";
-  $snippet->setProperties($properties);
-
-  $snippets[] = $snippet;
-}
-$category->addMany($snippets);
-unset($snippetNames, $snippets, $snippet, $properties, $snippetInfo, $snippetName, $snippetDesc);
+/* add snippets */
+$snippets = include $sources['data'].'transport.snippets.php';
+if (is_array($snippets)) {
+    $category->addMany($snippets,'Snippets');
+} else { $modx->log(modX::LOG_LEVEL_FATAL,'Adding snippets failed.'); }
+$modx->log(modX::LOG_LEVEL_INFO,'Packaged in '.count($snippets).' snippets.'); flush();
+unset($snippets);
 
 /* create category vehicle */
 $attr = array(
@@ -138,11 +95,6 @@ $attr = array(
   xPDOTransport::UPDATE_OBJECT => true,
   xPDOTransport::RELATED_OBJECTS => true,
   xPDOTransport::RELATED_OBJECT_ATTRIBUTES => array(
-    'Chunks' => array(
-      xPDOTransport::PRESERVE_KEYS => false,
-      xPDOTransport::UPDATE_OBJECT => true,
-      xPDOTransport::UNIQUE_KEY => 'name',
-    ),
     'Snippets' => array(
       xPDOTransport::PRESERVE_KEYS => false,
       xPDOTransport::UPDATE_OBJECT => true,
@@ -151,36 +103,35 @@ $attr = array(
   ),
 );
 
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaging vehicle...');
+$modx->log(modX::LOG_LEVEL_INFO, 'Packaging in vehicle...'); flush();
 $vehicle = $builder->createVehicle($category, $attr);
 $vehicle->resolve('file', array(
-  'source' => $sources['core'],
+  'source' => $sources['source_core'],
   'target' => "return MODX_CORE_PATH . 'components/';",
 ));
 
 $builder->putVehicle($vehicle);
 unset($vehicle);
+unset($category);
 
-$modx->log(modX::LOG_LEVEL_INFO, 'Packaging lexicon...');
-$builder->buildLexicon($sources['lexicon']);
+// $modx->log(modX::LOG_LEVEL_INFO, 'Packaging lexicon...'); flush();
+// $builder->buildLexicon($sources['lexicon']);
 
 /* now pack in the license file, readme and setup options */
 $builder->setPackageAttributes(array(
-  'license' => file_get_contents($sources['docs'] . '/license.txt'),
-  'readme' => file_get_contents($sources['docs'] . '/readme.txt'),
+  'license' => file_get_contents($sources['docs'] . 'license.txt'),
+  'readme' => file_get_contents($sources['docs'] . 'readme.txt'),
+  'changelog' => file_get_contents($sources['docs'] . 'changelog.txt'),
 ));
+$modx->log(modX::LOG_LEVEL_INFO,'Packaged in package attributes.'); flush();
 
+/* zip up package */
+$modx->log(modX::LOG_LEVEL_INFO,'Packing...'); flush();
 $builder->pack();
 unset($builder);
 
-$mtime = microtime();
-$mtime = explode(' ', $mtime);
-$mtime = $mtime[1] + $mtime[0];
-$tend = $mtime;
-$totalTime = ($tend - $tstart);
-$totalTime = sprintf('%2.4f s', $totalTime);
-
-$modx->log(modX::LOG_LEVEL_INFO,
-  "\n<br />Package Built.<br />\nExecution time: {$totalTime}\n");
-
-exit();
+/* calculate build time */
+$tend= explode(" ", microtime());
+$tend= $tend[1] + $tend[0];
+$totalTime= sprintf("%2.4f s",($tend - $tstart));
+$modx->log(modX::LOG_LEVEL_INFO,"\n<br />Package Built.<br />\nExecution time: {$totalTime}\n");

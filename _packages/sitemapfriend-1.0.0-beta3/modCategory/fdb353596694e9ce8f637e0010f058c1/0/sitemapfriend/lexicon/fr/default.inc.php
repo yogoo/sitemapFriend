@@ -2,7 +2,6 @@
 /**
  * sitemapFriend
  *
- * Copyright 2010 by Mihai Șucan <mihai.sucan@gmail.com>
  * Copyright 2012 by Jérôme Perrin <hello@jeromeperrin.com>
  *
  * - Based on GoogleSiteMap by Shaun McCormick <shaun@modx.com>
@@ -26,14 +25,12 @@
  * @package sitemapfriend
  */
 
-/* setup path to component */
-$path = $modx->getOption('sitemapfriend.core_path',null,$modx->getOption('core_path').'components/sitemapfriend/');
-
-/* instanciate the class */
-$sitemapFriend = $modx->getService('sitemapfriend','SitemapFriend',$path.'model/sitemapfriend/',$scriptProperties);
-if (!($sitemapFriend instanceof SitemapFriend)) return $modx->lexicon('sitemapfriend.error.loadingclass',array('path' => $path.'model/sitemapfriend/'));
-
-/* generate the sitemap */
-$result = $sitemapFriend->run();
-unset($sitemapFriend);
-return $result;
+/**
+ * Default French Topic for sitemapFriend.
+ *
+ * @package sitemapfriend
+ * @subpackage lexicon
+ * @language fr
+ */
+$_lang['sitemapFriend'] = 'sitemapFriend';
+$_lang['sitemapfriend.error.loadingclass'] = 'Erreur lors du chargement de la classe SitemapFriend à [[+path]].';

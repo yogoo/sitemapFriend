@@ -2,9 +2,9 @@
 /**
  * sitemapFriend
  *
- * Copyright (c) 2010 Mihai Șucan <mihai.sucan@gmail.com>.
+ * Copyright 2010 by Mihai Șucan <mihai.sucan@gmail.com>
  *
- * - Based on GoogleSiteMap by Shaun McCormick <shaun@modx.com>.
+ * - Based on GoogleSiteMap by Shaun McCormick <shaun@modx.com>
  *
  * This file is part of sitemapFriend.
  *
@@ -28,10 +28,11 @@
 /**
  * @package sitemapfriend
  */
+
 $properties = array(
     array(
         'name' => 'type',
-        'desc' => 'type',
+        'desc' => 'sitemapfriend.prop_desc.type',
         'type' => 'list',
         'options' => array(
           array('name' => 'HTML', 'value' => 'html'),
@@ -42,7 +43,7 @@ $properties = array(
     ),
     array(
         'name' => 'urlScheme',
-        'desc' => 'urlScheme',
+        'desc' => 'sitemapfriend.prop_desc.urlScheme',
         'type' => 'list',
         'options' => array(
           array('name' => 'Relative', 'value' => -1),
@@ -54,15 +55,15 @@ $properties = array(
     ),
     array(
         'name' => 'startId',
-        'desc' => 'startId',
-        'type' => 'numberfield',
+        'desc' => 'sitemapfriend.prop_desc.startId',
+        'type' => 'textfield',
         'options' => '',
         'value' => 0,
         'lexicon' => PKG_NAME_LOWER . ':properties',
     ),
     array(
         'name' => 'contexts',
-        'desc' => 'contexts',
+        'desc' => 'sitemapfriend.prop_desc.contexts',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -70,7 +71,7 @@ $properties = array(
     ),
     array(
         'name' => 'showDeleted',
-        'desc' => 'showDeleted',
+        'desc' => 'sitemapfriend.prop_desc.showDeleted',
         'type' => 'combo-boolean',
         'options' => '',
         'value' => false,
@@ -78,7 +79,7 @@ $properties = array(
     ),
     array(
         'name' => 'showUnpublished',
-        'desc' => 'showUnpublished',
+        'desc' => 'sitemapfriend.prop_desc.showUnpublished',
         'type' => 'combo-boolean',
         'options' => '',
         'value' => false,
@@ -86,7 +87,7 @@ $properties = array(
     ),
     array(
         'name' => 'onlySearchable',
-        'desc' => 'onlySearchable',
+        'desc' => 'sitemapfriend.prop_desc.onlySearchable',
         'type' => 'combo-boolean',
         'options' => '',
         'value' => true,
@@ -94,7 +95,7 @@ $properties = array(
     ),
     array(
         'name' => 'showHidden',
-        'desc' => 'showHidden',
+        'desc' => 'sitemapfriend.prop_desc.showHidden',
         'type' => 'combo-boolean',
         'options' => '',
         'value' => true,
@@ -102,15 +103,15 @@ $properties = array(
     ),
     array(
         'name' => 'maxDepth',
-        'desc' => 'maxDepth',
-        'type' => 'numberfield',
+        'desc' => 'sitemapfriend.prop_desc.maxDepth',
+        'type' => 'textfield',
         'options' => '',
         'value' => 0,
         'lexicon' => PKG_NAME_LOWER . ':properties',
     ),
     array(
         'name' => 'onlyTemplates',
-        'desc' => 'onlyTemplates',
+        'desc' => 'sitemapfriend.prop_desc.onlyTemplates',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -118,7 +119,7 @@ $properties = array(
     ),
     array(
         'name' => 'skipTemplates',
-        'desc' => 'skipTemplates',
+        'desc' => 'sitemapfriend.prop_desc.skipTemplates',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -126,7 +127,7 @@ $properties = array(
     ),
     array(
         'name' => 'excludeResources',
-        'desc' => 'excludeResources',
+        'desc' => 'sitemapfriend.prop_desc.excludeResources',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -134,7 +135,7 @@ $properties = array(
     ),
     array(
         'name' => 'skipResources',
-        'desc' => 'skipResources',
+        'desc' => 'sitemapfriend.prop_desc.skipResources',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -142,7 +143,7 @@ $properties = array(
     ),
     array(
         'name' => 'includeResources',
-        'desc' => 'includeResources',
+        'desc' => 'sitemapfriend.prop_desc.includeResources',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -150,7 +151,7 @@ $properties = array(
     ),
     array(
         'name' => 'excludeChildrenOf',
-        'desc' => 'excludeChildrenOf',
+        'desc' => 'sitemapfriend.prop_desc.excludeChildrenOf',
         'type' => 'textfield',
         'options' => '',
         'value' => '',
@@ -158,7 +159,7 @@ $properties = array(
     ),
     array(
         'name' => 'sortBy',
-        'desc' => 'sortBy',
+        'desc' => 'sitemapfriend.prop_desc.sortBy',
         'type' => 'textfield',
         'options' => '',
         'value' => 'menuindex',
@@ -166,7 +167,7 @@ $properties = array(
     ),
     array(
         'name' => 'sortDir',
-        'desc' => 'sortDir',
+        'desc' => 'sitemapfriend.prop_desc.sortDir',
         'type' => 'list',
         'options' => array(
           array('name' => 'Ascending', 'value' => 'ASC'),
@@ -177,7 +178,7 @@ $properties = array(
     ),
     array(
         'name' => 'parentTitles',
-        'desc' => 'parentTitles',
+        'desc' => 'sitemapfriend.prop_desc.parentTitles',
         'type' => 'combo-boolean',
         'options' => '',
         'value' => false,
@@ -185,7 +186,7 @@ $properties = array(
     ),
     array(
         'name' => 'parentTitlesReversed',
-        'desc' => 'parentTitlesReversed',
+        'desc' => 'sitemapfriend.prop_desc.parentTitlesReversed',
         'type' => 'combo-boolean',
         'options' => '',
         'value' => false,
@@ -193,7 +194,7 @@ $properties = array(
     ),
     array(
         'name' => 'titleSeparator',
-        'desc' => 'titleSeparator',
+        'desc' => 'sitemapfriend.prop_desc.titleSeparator',
         'type' => 'textfield',
         'options' => '',
         'value' => ' - ',
@@ -201,7 +202,7 @@ $properties = array(
     ),
     array(
         'name' => 'tplItem',
-        'desc' => 'tplItem',
+        'desc' => 'sitemapfriend.prop_desc.tplItem',
         'type' => 'textfield',
         'options' => '',
         'value' => 'sitemap_html_item',
@@ -209,7 +210,7 @@ $properties = array(
     ),
     array(
         'name' => 'tplContainer',
-        'desc' => 'tplContainer',
+        'desc' => 'sitemapfriend.prop_desc.tplContainer',
         'type' => 'textfield',
         'options' => '',
         'value' => 'sitemap_html_container',
@@ -217,7 +218,7 @@ $properties = array(
     ),
     array(
         'name' => 'tplOuter',
-        'desc' => 'tplOuter',
+        'desc' => 'sitemapfriend.prop_desc.tplOuter',
         'type' => 'textfield',
         'options' => '',
         'value' => 'sitemap_html_outer',
@@ -225,7 +226,7 @@ $properties = array(
     ),
     array(
         'name' => 'lastmodFormat',
-        'desc' => 'lastmodFormat',
+        'desc' => 'sitemapfriend.prop_desc.lastmodFormat',
         'type' => 'textfield',
         'options' => '',
         'value' => 'F j, Y, g:i a',
@@ -234,3 +235,5 @@ $properties = array(
 );
 
 return $properties;
+
+?>
