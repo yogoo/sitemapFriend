@@ -33,6 +33,7 @@
  * @language en
  */
 $_lang['sitemapfriend.prop_desc.type'] = 'The type of sitemap you want: xml or html. Depending on the choice you make, the other properties change their default value.';
+$_lang['sitemapfriend.prop_desc.titleField'] = 'The title: pagetitle, longtitle, menutitle. Default value: pagetitle.';
 $_lang['sitemapfriend.prop_desc.urlScheme'] = 'The URL scheme you want: http, https, full, abs, etc. See the $modx->makeUrl() documentation. Default for HTML type: abs. For XML type, the urlScheme is always full.';
 $_lang['sitemapfriend.prop_desc.startId'] = 'Build the site map starting from the given resource ID. Default value: 0';
 $_lang['sitemapfriend.prop_desc.contexts'] = 'Limit to the specified context(s). If empty, will grab resources from current Context. Defaults to empty, can support a comma-separated list.';

@@ -17,4 +17,7 @@ Examples:
 [[!sitemapFriend &type=`xml`]]
 
 Documentation:
-http://github.com/mihaisucan/sitemapFriend/wiki/
+http://rtfm.modx.com/display/ADDON/sitemapFriend
+
+Follow the project on Github:
+https://github.com/yogoo/sitemapFriend

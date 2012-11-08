@@ -33,6 +33,7 @@
  * @language fr
  */
 $_lang['sitemapfriend.prop_desc.type'] = 'Type de plan du site: xml ou html. Les valeurs par défaut des autres propriétés changent en fonction de cette valeur.';
+$_lang['sitemapfriend.prop_desc.titleField'] = 'Le titre : pagetitle, longtitle, menutitle. Valeur par défaut: pagetitle.';
 $_lang['sitemapfriend.prop_desc.urlScheme'] = 'Format des URL: http, https, full, abs, etc. Voir la documentation de $modx->makeUrl(). Valeur par défaut pour un plan du site HTML : abs. Plan du site XML : le format est toujours "full".';
 $_lang['sitemapfriend.prop_desc.startId'] = 'ID de la ressource à partir de laquelle construire le plan du site. Valeur par défaut : 0.';
 $_lang['sitemapfriend.prop_desc.contexts'] = 'Contextes à inclure, séparés par une virgule. Si vide, le contexte courant sera utilisé. Vide par défaut.';

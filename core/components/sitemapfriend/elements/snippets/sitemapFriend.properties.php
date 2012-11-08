@@ -36,9 +36,21 @@ $properties = array(
         'type' => 'list',
         'options' => array(
           array('name' => 'HTML', 'value' => 'html'),
-          array('name' => 'XML', 'value' => 'xml'),
+          array('name' => 'XML',  'value' => 'xml'),
         ),
         'value' => 'html',
+        'lexicon' => PKG_NAME_LOWER . ':properties',
+    ),
+    array(
+        'name' => 'titleField',
+        'desc' => 'sitemapfriend.prop_desc.titleField',
+        'type' => 'list',
+        'options' => array(
+          array('name' => 'Title',      'value' => 'pagetitle'),
+          array('name' => 'Long Title', 'value' => 'longtitle'),
+          array('name' => 'Menu Title', 'value' => 'menutitle'),
+        ),
+        'value' => 'pagetitle',
         'lexicon' => PKG_NAME_LOWER . ':properties',
     ),
     array(
@@ -170,7 +182,7 @@ $properties = array(
         'desc' => 'sitemapfriend.prop_desc.sortDir',
         'type' => 'list',
         'options' => array(
-          array('name' => 'Ascending', 'value' => 'ASC'),
+          array('name' => 'Ascending',  'value' => 'ASC'),
           array('name' => 'Descending', 'value' => 'DESC'),
         ),
         'value' => 'ASC',
