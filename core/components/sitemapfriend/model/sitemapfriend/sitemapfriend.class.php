@@ -94,9 +94,11 @@ class SitemapFriend {
     $this->includeResources = array();
     $this->excludeChildrenOf = array();
 
-    $this->queryWhere = array(
-      'modResource.class_key:!=' => 'modWebLink',
-    );
+    if (!$this->config['includeWebLinks']) {
+      $this->queryWhere = array(
+        'modResource.class_key:!=' => 'modWebLink',
+      );
+    }
 
     if (!empty($this->config['contexts'])) {
       $this->queryWhere['modResource.context_key:IN'] =
@@ -420,5 +422,3 @@ class SitemapFriend {
   }
 
 }
-
-// vim:set fo=anqrowcb tw=80 ts=2 sw=2 sts=2 sta et noai nocin fenc=utf-8 ff=unix:

@@ -44,6 +44,7 @@ $_lang['sitemapfriend.prop_desc.showHidden'] = 'Inclure les ressources ne faisan
 $_lang['sitemapfriend.prop_desc.maxDepth'] = 'Profondeur de l\'indexation. Toute la hiérarchie des resources sera indexée si la valeur est 0 ou vide. Valeur par défaut : 0.';
 $_lang['sitemapfriend.prop_desc.onlyTemplates'] = 'Liste d\'ID de modèles à inclure, séparés par une virgule. Passer au moins un ID pour activer le filtre.';
 $_lang['sitemapfriend.prop_desc.skipTemplates'] = 'Liste d\'ID de modèles à exclure, séparés par une virgule. Passer au moins un ID pour activer le filtre.';
+$_lang['sitemapfriend.prop_desc.includeWebLinks'] = 'Inclure les lien web ? Valeur par défaut : non.';
 $_lang['sitemapfriend.prop_desc.excludeResources'] = 'Liste d\'ID des ressources à exclure du plan du site, séparés par une virgule. Les ressources enfants seront également exclues. Les ressources définies dans les options de Modx comme page d\'erreur, site indisponible, page non-autorisée, ainsi que le plan du site lui-même sont toujours exclues.';
 $_lang['sitemapfriend.prop_desc.skipResources'] = 'Liste d\'ID des resources à masquer dans le plan du site, séparés par une virgule. Les ressources enfants ne sont PAS exclues.';
 $_lang['sitemapfriend.prop_desc.includeResources'] = 'Liste d\'ID des ressources à inclure en permanence dans le plan du site, séparés par une virgule. Ces ressources seront incluses, même si elles devraient normalement être exclues par les options suivantes : showDeleted, showUnpublished, onlySearchable et showHidden.';

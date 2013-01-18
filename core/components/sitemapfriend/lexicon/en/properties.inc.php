@@ -44,6 +44,7 @@ $_lang['sitemapfriend.prop_desc.showHidden'] = 'If true, will include resources 
 $_lang['sitemapfriend.prop_desc.maxDepth'] = 'The maximum depth down the tree to grab resources from. If set to empty or 0, will grab all resources.';
 $_lang['sitemapfriend.prop_desc.onlyTemplates'] = 'A comma-separated list of template IDs to filter by. Will only filter if a value is set.';
 $_lang['sitemapfriend.prop_desc.skipTemplates'] = 'A comma-separated list of template IDs to skip. Will only filter if a value is set.';
+$_lang['sitemapfriend.prop_desc.includeWebLinks'] = 'If true, will include Weblinks. Default is false.';
 $_lang['sitemapfriend.prop_desc.excludeResources'] = 'A comma-separated list of resources to exclude entirely from the site map. Child resources will also be excluded. The resources pointed at by the modx options error_page, site_unavailable_page, unauthorized_page and the site map page itself are always excluded.';
 $_lang['sitemapfriend.prop_desc.skipResources'] = 'A comma-separated list of resources to hide from the site map. Child resources will NOT be excluded.';
 $_lang['sitemapfriend.prop_desc.includeResources'] = 'A comma-separated list of resources to always include in the site map, even if the given resource would otherwise be filtered out by the showDeleted, showUnpublished, onlySearchable and showHidden options.';

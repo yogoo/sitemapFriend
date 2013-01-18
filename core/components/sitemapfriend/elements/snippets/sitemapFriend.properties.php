@@ -138,6 +138,14 @@ $properties = array(
         'lexicon' => PKG_NAME_LOWER . ':properties',
     ),
     array(
+        'name' => 'includeWebLinks',
+        'desc' => 'sitemapfriend.prop_desc.includeWebLinks',
+        'type' => 'combo-boolean',
+        'options' => '',
+        'value' => false,
+        'lexicon' => PKG_NAME_LOWER . ':properties',
+    ),
+    array(
         'name' => 'excludeResources',
         'desc' => 'sitemapfriend.prop_desc.excludeResources',
         'type' => 'textfield',
