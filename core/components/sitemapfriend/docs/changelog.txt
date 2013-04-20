@@ -1,9 +1,15 @@
 Changelog for sitemapFriend.
 
+sitemapFriend 1.0.2-pl (2013-04-20)
+===============================================================================
+- Fix: issue #4: removed <dc:title> from xml sitemaps as it doesn't pass
+                 Google Sitemap validation.
+
+
 sitemapFriend 1.0.1-pl (2013-01-18)
 ===============================================================================
 - Addition: issue #2: new parameter includeWebLinks (bool) - default is false.
-- Doc: add missing '?' in example calls from readme file
+- Doc: add missing '?' in example calls from readme file.
 
 
 sitemapFriend 1.0.0-rc1 (2012-11-08)
